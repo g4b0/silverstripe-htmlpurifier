@@ -1,4 +1,4 @@
-# Widgets Pages Extension
+# HtmlPurifier
 
 A simple wrapper around HtmlPurifier v. 4.6.0 [http://htmlpurifier.org/]
 
@@ -16,7 +16,8 @@ the Purifier class to add your own purifier functions.
 
 Install the module through [composer](http://getcomposer.org):
 
-	composer zirak/htmlpurifier
+	composer require zirak/htmlpurifier
+	composer update
 
 ## Usage
 
