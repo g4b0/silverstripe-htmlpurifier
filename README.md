@@ -10,7 +10,7 @@ the Purifier class to add your own purifier functions.
 
 ## Requirements
 
- * SilverStripe 3.1
+ * SilverStripe >= 3.1 < 4.0
 
 ## Installation
 
