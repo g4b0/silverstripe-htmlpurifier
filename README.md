@@ -10,13 +10,15 @@ the Purifier class to add your own purifier functions.
 
 ## Requirements
 
- * SilverStripe >= 3.1 < 4.0
+ * SilverStripe >= 4.1 < 5.0
+
+ For 3.x installations refer to the 1.x version
 
 ## Installation
 
 Install the module through [composer](http://getcomposer.org):
 
-	composer require zirak/htmlpurifier
+	composer require g4b0/htmlpurifier
 	composer update
 
 ## Usage
