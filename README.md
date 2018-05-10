@@ -1,6 +1,6 @@
 # HtmlPurifier
 
-A simple wrapper around HtmlPurifier v. 4.6.0 [http://htmlpurifier.org/]
+A simple wrapper around HtmlPurifier [http://htmlpurifier.org/]
 
 ## Introduction
 
