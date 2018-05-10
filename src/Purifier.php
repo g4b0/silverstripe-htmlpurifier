@@ -1,6 +1,6 @@
 <?php
 
-namespace g4b0\HTMLPurifier;
+namespace g4b0\HtmlPurifier;
 
 /**
  * Standard HTML purifier
