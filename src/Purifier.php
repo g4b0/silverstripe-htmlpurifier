@@ -1,11 +1,38 @@
 <?php
 
 namespace g4b0\HtmlPurifier;
+use SilverStripe\Core\Config\Config;
 
 /**
  * Standard HTML purifier
  */
 class Purifier {
+
+	/**
+	 * Set custom options for HTML Purifier
+	 * @link http://htmlpurifier.org/live/configdoc/plain.html
+	 * @config
+	 * @var array
+	 */
+	private static $html_purifier_config = [];
+
+	/**
+	 * Get the HTML Purifier config
+	 * @return \HTMLPurifier_Config
+	 */
+	private static function GetHTMLPurifierConfig() {
+		$defaultConfig = \HTMLPurifier_Config::createDefault();
+
+		$customConfig = Config::inst()->get('g4b0\HtmlPurifier\Purifier', 'html_purifier_config');
+
+		if(is_array($customConfig)) {
+			foreach ($customConfig as $key => $value) {
+				$defaultConfig->set($key, $value);
+			}
+		}
+
+		return $defaultConfig;
+	}
 
 	/**
 	 * Standard HTML purifier
@@ -15,8 +42,8 @@ class Purifier {
 	 */
 	public static function Purify($html = null, $encoding = 'UTF-8') {
 
-		$config = \HTMLPurifier_Config::createDefault();
-		$config->set('Core.Encoding', $encoding);		
+		$config = self::GetHTMLPurifierConfig();
+		$config->set('Core.Encoding', $encoding);
 		$config->set('HTML.Allowed', 'span,p,br,a,h1,h2,h3,h4,h5,strong,em,u,ul,li,ol,hr,blockquote,sub,sup,p[class],img');
 		$config->set('HTML.AllowedElements', array('span', 'p', 'br', 'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'strong', 'em', 'u', 'ul', 'li', 'ol', 'hr', 'blockquote', 'sub', 'sup', 'img'));
 		$config->set('HTML.AllowedAttributes', 'style,target,title,href,class,src,border,alt,width,height,title,name,id');
@@ -36,7 +63,7 @@ class Purifier {
 	 */
 	public static function PurifyXHTML($html = null, $encoding = 'UTF-8') {
 
-		$config = \HTMLPurifier_Config::createDefault();
+		$config = self::GetHTMLPurifierConfig();
 		$config->set('Core.Encoding', $encoding);
 		$config->set('HTML.Doctype', 'XHTML 1.0 Strict');
 		$config->set('HTML.TidyLevel', 'heavy'); // all changes, minus...
@@ -68,7 +95,7 @@ class Purifier {
 	 */
 	public static function PurifyTXT($html = null, $encoding = 'UTF-8') {
 		
-		$config = \HTMLPurifier_Config::createDefault();
+		$config = self::GetHTMLPurifierConfig();
 		$config->set('Core.Encoding', $encoding);
 		$config->set('HTML.Allowed', null); // Allow Nothing
 		$config->set('HTML.AllowedElements', array());
