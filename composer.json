@@ -9,8 +9,8 @@
         "email": "gabriele@brosulo.net"
     }],
     "require": {
-        "silverstripe/framework": "~4.1",
-        "silverstripe/cms": "~4.1",
+        "silverstripe/framework": "~4.1|^5",
+        "silverstripe/cms": "~4.1|^5",
         "ezyang/htmlpurifier": "^4.10"
     },
     "autoload": {
